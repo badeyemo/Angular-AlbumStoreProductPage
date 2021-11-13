@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -12,13 +12,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { RouterModule, Routes, RoutesRecognized } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
 
-appRoutes:Routes[
-  path: 
-  ProductService;
-  product/:identifierModuleUrl;
-  component: ProductListComponent;
-  ProductPageComponent
-
+const appRoutes:Routes = [
+  { path: 'products', component: ProductListComponent },
+  { path: 'product/:id', component: ProductPageComponent }
 ];
 
 @NgModule({
@@ -33,7 +29,7 @@ appRoutes:Routes[
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
